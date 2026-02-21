@@ -10,7 +10,7 @@
     "start": "vite preview"
   },
   "zeabur": {
-    "outputDirectory": "dist"
+    "outputDirectory": "build"
   },
   "dependencies": {
     "react-dom": "^19.2.4",
