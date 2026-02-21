@@ -79,7 +79,18 @@ const App: React.FC = () => {
 
         <div className="relative z-10 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left space-y-8 fade-in">
-               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700 text-sky-400 text-sm font-bold uppercase tracking-widest shadow-lg">
+               {/* Mobile Image (Horse Head) */}
+               <div className="md:hidden flex justify-center mb-4">
+                  <div className="relative w-48 h-48 bg-gradient-to-tr from-slate-800 to-slate-900 rounded-[2rem] rotate-3 shadow-2xl flex items-center justify-center border border-slate-700/50 backdrop-blur-sm overflow-hidden">
+                    <img 
+                      src="/FM.png" 
+                      alt="Game Cover" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+               </div>
+
+               <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700 text-sky-400 text-sm font-bold uppercase tracking-widest shadow-lg">
                   <Activity className="w-4 h-4" /> 医疗专业培训
                </div>
                
