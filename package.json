@@ -9,6 +9,9 @@
     "preview": "vite preview",
     "start": "vite preview"
   },
+  "zeabur": {
+    "outputDirectory": "dist"
+  },
   "dependencies": {
     "react-dom": "^19.2.4",
     "lucide-react": "^0.564.0",
