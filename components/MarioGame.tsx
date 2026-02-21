@@ -1089,38 +1089,42 @@ export const MarioGame: React.FC<MarioGameProps> = ({ onGameComplete, onGameOver
       </div>
 
       {/* Mobile Controls */}
-      <div className="absolute bottom-6 left-6 z-[200] flex gap-4 md:hidden">
-        <button
-          className="w-16 h-16 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/80 active:bg-white/80 active:scale-95 transition-all shadow-lg"
-          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowLeft'); }}
-          onTouchEnd={(e) => { e.preventDefault(); keysRef.current['ArrowLeft'] = false; }}
-        >
-          <ArrowLeft size={32} className="text-slate-800" />
-        </button>
-        <button
-          className="w-16 h-16 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/80 active:bg-white/80 active:scale-95 transition-all shadow-lg"
-          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowRight'); }}
-          onTouchEnd={(e) => { e.preventDefault(); keysRef.current['ArrowRight'] = false; }}
-        >
-          <ArrowRight size={32} className="text-slate-800" />
-        </button>
-      </div>
+      {!currentQuestion && !feedback && !finalCelebration && (
+        <>
+          <div className="absolute bottom-6 left-6 z-[200] flex gap-4 md:hidden">
+            <button
+              className="w-16 h-16 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/80 active:bg-white/80 active:scale-95 transition-all shadow-lg"
+              onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowLeft'); }}
+              onTouchEnd={(e) => { e.preventDefault(); keysRef.current['ArrowLeft'] = false; }}
+            >
+              <ArrowLeft size={32} className="text-slate-800" />
+            </button>
+            <button
+              className="w-16 h-16 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/80 active:bg-white/80 active:scale-95 transition-all shadow-lg"
+              onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowRight'); }}
+              onTouchEnd={(e) => { e.preventDefault(); keysRef.current['ArrowRight'] = false; }}
+            >
+              <ArrowRight size={32} className="text-slate-800" />
+            </button>
+          </div>
 
-      <div className="absolute bottom-6 right-6 z-[200] flex gap-4 md:hidden">
-         <button
-          className="w-20 h-20 bg-blue-500/50 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-blue-400/80 active:bg-blue-600/80 active:scale-95 transition-all shadow-lg"
-          onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowUp'); }}
-          onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('ArrowUp'); keysRef.current['ArrowUp'] = false; }}
-        >
-          <ArrowUp size={40} className="text-white" />
-        </button>
-      </div>
+          <div className="absolute bottom-6 right-6 z-[200] flex gap-4 md:hidden">
+             <button
+              className="w-20 h-20 bg-blue-500/50 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-blue-400/80 active:bg-blue-600/80 active:scale-95 transition-all shadow-lg"
+              onTouchStart={(e) => { e.preventDefault(); handleTouchStart('ArrowUp'); }}
+              onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('ArrowUp'); keysRef.current['ArrowUp'] = false; }}
+            >
+              <ArrowUp size={40} className="text-white" />
+            </button>
+          </div>
+        </>
+      )}
 
       {/* Question Modal */}
       {currentQuestion && !feedback && (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur rounded-[1rem] md:rounded-[2rem] p-4 md:p-8 max-w-lg md:max-w-2xl w-[95%] md:w-full max-h-[85vh] overflow-y-auto scrollbar-hide shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
-             <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-8 border-b border-slate-100 pb-2 md:pb-4">
+          <div className="bg-white/95 backdrop-blur rounded-[1rem] md:rounded-[2rem] p-4 md:p-8 max-w-lg md:max-w-2xl w-[95%] md:w-full max-h-[90vh] overflow-y-auto scrollbar-hide shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
+             <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-8 border-b border-slate-100 pb-2 md:pb-4">
                <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-1.5 md:p-3 rounded-lg md:rounded-2xl shadow-lg transform rotate-3">
                  <CircleHelp className="w-5 h-5 md:w-8 md:h-8 text-white"/>
                </div>
@@ -1131,12 +1135,12 @@ export const MarioGame: React.FC<MarioGameProps> = ({ onGameComplete, onGameOver
              </div>
              
              {currentQuestion.scenario && (
-               <div className="bg-slate-50 p-3 md:p-6 rounded-lg md:rounded-2xl mb-3 md:mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner text-xs md:text-base">
+               <div className="bg-slate-50 p-3 md:p-6 rounded-lg md:rounded-2xl mb-2 md:mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner text-xs md:text-base">
                  "{currentQuestion.scenario}"
                </div>
              )}
              
-             <h3 className="text-base md:text-xl font-bold text-slate-900 mb-3 md:mb-8 leading-relaxed">{currentQuestion.question}</h3>
+             <h3 className="text-sm md:text-xl font-bold text-slate-900 mb-2 md:mb-8 leading-relaxed">{currentQuestion.question}</h3>
              
              <div className="grid gap-2 md:gap-4">
                {currentQuestion.options.map(opt => (
