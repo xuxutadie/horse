@@ -1119,35 +1119,35 @@ export const MarioGame: React.FC<MarioGameProps> = ({ onGameComplete, onGameOver
       {/* Question Modal */}
       {currentQuestion && !feedback && (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
-             <div className="flex items-center gap-4 mb-8 border-b border-slate-100 pb-4">
-               <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-3 rounded-2xl shadow-lg transform rotate-3">
-                 <CircleHelp className="w-8 h-8 text-white"/>
+          <div className="bg-white/95 backdrop-blur rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
+             <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-8 border-b border-slate-100 pb-3 md:pb-4">
+               <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-2 md:p-3 rounded-xl md:rounded-2xl shadow-lg transform rotate-3">
+                 <CircleHelp className="w-6 h-6 md:w-8 md:h-8 text-white"/>
                </div>
                <div>
-                 <h2 className="text-2xl font-black text-slate-800 tracking-tight">挑战时刻</h2>
-                 <p className="text-slate-500 text-sm font-medium">请仔细阅读情景并作答</p>
+                 <h2 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight">挑战时刻</h2>
+                 <p className="text-slate-500 text-xs md:text-sm font-medium">请仔细阅读情景并作答</p>
                </div>
              </div>
              
              {currentQuestion.scenario && (
-               <div className="bg-slate-50 p-6 rounded-2xl mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner">
+               <div className="bg-slate-50 p-4 md:p-6 rounded-xl md:rounded-2xl mb-4 md:mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner text-sm md:text-base">
                  "{currentQuestion.scenario}"
                </div>
              )}
              
-             <h3 className="text-xl font-bold text-slate-900 mb-8 leading-relaxed">{currentQuestion.question}</h3>
+             <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-4 md:mb-8 leading-relaxed">{currentQuestion.question}</h3>
              
-             <div className="grid gap-4">
+             <div className="grid gap-3 md:gap-4">
                {currentQuestion.options.map(opt => (
                  <button
                    key={opt.id}
                    onClick={() => handleAnswer(opt.id)}
-                   className="group relative overflow-hidden text-left p-5 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-500 hover:shadow-lg transition-all duration-200 font-medium text-slate-700 flex items-center gap-4"
+                   className="group relative overflow-hidden text-left p-4 md:p-5 rounded-xl md:rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-500 hover:shadow-lg transition-all duration-200 font-medium text-slate-700 flex items-center gap-3 md:gap-4"
                  >
                    <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                    <span className="relative z-10 bg-slate-100 w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold text-slate-600 group-hover:bg-blue-500 group-hover:text-white transition-colors">{opt.id}</span>
-                   <span className="relative z-10 flex-1">{opt.text}</span>
+                   <span className="relative z-10 flex-1 text-sm md:text-base">{opt.text}</span>
                    <div className="relative z-10 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all text-blue-500">→</div>
                  </button>
                ))}
