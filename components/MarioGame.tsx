@@ -1119,35 +1119,35 @@ export const MarioGame: React.FC<MarioGameProps> = ({ onGameComplete, onGameOver
       {/* Question Modal */}
       {currentQuestion && !feedback && (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
-             <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-8 border-b border-slate-100 pb-3 md:pb-4">
-               <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-2 md:p-3 rounded-xl md:rounded-2xl shadow-lg transform rotate-3">
-                 <CircleHelp className="w-6 h-6 md:w-8 md:h-8 text-white"/>
+          <div className="bg-white/95 backdrop-blur rounded-[1rem] md:rounded-[2rem] p-4 md:p-8 max-w-lg md:max-w-2xl w-[95%] md:w-full max-h-[85vh] overflow-y-auto scrollbar-hide shadow-2xl animate-in zoom-in-95 duration-300 border border-white/50">
+             <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-8 border-b border-slate-100 pb-2 md:pb-4">
+               <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-1.5 md:p-3 rounded-lg md:rounded-2xl shadow-lg transform rotate-3">
+                 <CircleHelp className="w-5 h-5 md:w-8 md:h-8 text-white"/>
                </div>
                <div>
-                 <h2 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight">挑战时刻</h2>
-                 <p className="text-slate-500 text-xs md:text-sm font-medium">请仔细阅读情景并作答</p>
+                 <h2 className="text-lg md:text-2xl font-black text-slate-800 tracking-tight">挑战时刻</h2>
+                 <p className="text-slate-500 text-[10px] md:text-sm font-medium">请仔细阅读情景并作答</p>
                </div>
              </div>
              
              {currentQuestion.scenario && (
-               <div className="bg-slate-50 p-4 md:p-6 rounded-xl md:rounded-2xl mb-4 md:mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner text-sm md:text-base">
+               <div className="bg-slate-50 p-3 md:p-6 rounded-lg md:rounded-2xl mb-3 md:mb-8 text-slate-700 italic border-l-4 border-blue-500 shadow-inner text-xs md:text-base">
                  "{currentQuestion.scenario}"
                </div>
              )}
              
-             <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-4 md:mb-8 leading-relaxed">{currentQuestion.question}</h3>
+             <h3 className="text-base md:text-xl font-bold text-slate-900 mb-3 md:mb-8 leading-relaxed">{currentQuestion.question}</h3>
              
-             <div className="grid gap-3 md:gap-4">
+             <div className="grid gap-2 md:gap-4">
                {currentQuestion.options.map(opt => (
                  <button
                    key={opt.id}
                    onClick={() => handleAnswer(opt.id)}
-                   className="group relative overflow-hidden text-left p-4 md:p-5 rounded-xl md:rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-500 hover:shadow-lg transition-all duration-200 font-medium text-slate-700 flex items-center gap-3 md:gap-4"
+                   className="group relative overflow-hidden text-left p-3 md:p-5 rounded-lg md:rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-500 hover:shadow-lg transition-all duration-200 font-medium text-slate-700 flex items-center gap-2 md:gap-4"
                  >
                    <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                    <span className="relative z-10 bg-slate-100 w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold text-slate-600 group-hover:bg-blue-500 group-hover:text-white transition-colors">{opt.id}</span>
-                   <span className="relative z-10 flex-1 text-sm md:text-base">{opt.text}</span>
+                   <span className="relative z-10 flex-1 text-xs md:text-base">{opt.text}</span>
                    <div className="relative z-10 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all text-blue-500">→</div>
                  </button>
                ))}
@@ -1159,31 +1159,31 @@ export const MarioGame: React.FC<MarioGameProps> = ({ onGameComplete, onGameOver
       {/* Feedback Modal */}
       {feedback && (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
-          <div className={`rounded-[2.5rem] p-10 max-w-lg w-full shadow-2xl text-center border-4 ${feedback.isCorrect ? 'bg-white border-green-400' : 'bg-white border-red-400'} relative overflow-hidden animate-in zoom-in-90 duration-300`}>
+          <div className={`rounded-[1.5rem] md:rounded-[2.5rem] p-5 md:p-10 max-w-sm md:max-w-lg w-full shadow-2xl text-center border-4 ${feedback.isCorrect ? 'bg-white border-green-400' : 'bg-white border-red-400'} relative overflow-hidden animate-in zoom-in-90 duration-300`}>
              
              {/* Celebration Background Effect */}
              {showCelebration && (
                 <div className="absolute inset-0 bg-gradient-to-b from-yellow-50 to-white animate-pulse pointer-events-none"></div>
              )}
 
-             <div className={`w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6 ${feedback.isCorrect ? 'bg-green-100 text-green-600 shadow-green-200' : 'bg-red-100 text-red-600 shadow-red-200'} shadow-xl relative z-10 transform -translate-y-4`}>
-                {feedback.isCorrect ? <CheckCircle2 size={48} strokeWidth={3} /> : <XCircle size={48} strokeWidth={3} />}
+             <div className={`w-16 h-16 md:w-24 md:h-24 mx-auto rounded-full flex items-center justify-center mb-4 md:mb-6 ${feedback.isCorrect ? 'bg-green-100 text-green-600 shadow-green-200' : 'bg-red-100 text-red-600 shadow-red-200'} shadow-xl relative z-10 transform -translate-y-2 md:-translate-y-4`}>
+                {feedback.isCorrect ? <CheckCircle2 size={32} className="md:w-12 md:h-12" strokeWidth={3} /> : <XCircle size={32} className="md:w-12 md:h-12" strokeWidth={3} />}
              </div>
              
-             <h2 className={`text-4xl font-black mb-2 relative z-10 tracking-tight ${feedback.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+             <h2 className={`text-2xl md:text-4xl font-black mb-2 relative z-10 tracking-tight ${feedback.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
                {feedback.isCorrect ? '回答正确！' : '回答错误！'}
              </h2>
              
-             <div className="w-16 h-1 bg-slate-100 mx-auto mb-6 rounded-full"></div>
+             <div className="w-12 md:w-16 h-1 bg-slate-100 mx-auto mb-4 md:mb-6 rounded-full"></div>
              
-             <div className="text-slate-600 mb-8 text-left bg-slate-50 p-6 rounded-2xl relative z-10 leading-relaxed shadow-inner">
-               <span className="font-bold text-slate-800 block mb-2 text-sm uppercase tracking-wider">解析:</span>
+             <div className="text-slate-600 mb-5 md:mb-8 text-left bg-slate-50 p-4 md:p-6 rounded-xl md:rounded-2xl relative z-10 leading-relaxed shadow-inner text-sm md:text-base max-h-[40vh] overflow-y-auto">
+               <span className="font-bold text-slate-800 block mb-1 md:mb-2 text-xs md:text-sm uppercase tracking-wider">解析:</span>
                {feedback.analysis}
              </div>
              
              <button
                onClick={closeFeedback}
-               className={`w-full py-4 rounded-2xl font-bold text-white text-lg transition-all transform hover:-translate-y-1 active:translate-y-0 shadow-xl hover:shadow-2xl relative z-10 flex items-center justify-center gap-2 ${feedback.isCorrect ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 shadow-green-200' : 'bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-400 hover:to-rose-500 shadow-red-200'}`}
+               className={`w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-white text-base md:text-lg transition-all transform hover:-translate-y-1 active:translate-y-0 shadow-xl hover:shadow-2xl relative z-10 flex items-center justify-center gap-2 ${feedback.isCorrect ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 shadow-green-200' : 'bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-400 hover:to-rose-500 shadow-red-200'}`}
              >
                {feedback.isCorrect ? '继续前进' : '结束游戏'}
              </button>
